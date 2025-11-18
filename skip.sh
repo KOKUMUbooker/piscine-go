@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# awk '{print $NF}' -> print last column
+# col 9 seems to be the last column that lists out the file names on "ls -l" output 
 # sed '1~2c\' -> replace odd number lines with nothing ie delete them
 #             -> 1~2 specifies the range
 #                where 1 is the starting point
