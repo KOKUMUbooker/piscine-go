@@ -1,6 +1,5 @@
 #! /bin/bash
 
-# NF -> inbuilt variable that points to the last column
 # awk '{print $NF}' -> print last column
 # sed '1~2c\' -> replace odd number lines with nothing ie delete them
 #             -> 1~2 specifies the range
@@ -10,4 +9,4 @@
 #              -> c - to specify action is change
 #              -> \ - specify the action to be used to achieve the action ie
 #                 change all odd numbered line with nothing ie delete them
-ls -l | awk '{print $NF}' | sed '1~2c\'
+ls -l | awk '{print $9}' | sed '1~2c\'
