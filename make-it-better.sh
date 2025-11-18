@@ -59,3 +59,6 @@ chmod 401 A
 touch -d "1995-04-10 10:10:00 UTC" A
 
 tar -cf done.tar 0  1  2  3  4  5  6  7  8  9  A 
+
+# cleanup folders & files created by this script
+rm -rf 0  1  2  3  4  5  6  7  8  9
