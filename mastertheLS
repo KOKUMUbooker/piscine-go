@@ -1,0 +1,7 @@
+#! /bin/bash
+
+# -ut -> Sort items newest first by access time
+# -m -> replace " " listing separation with ","
+# -F -> Add suffix / on directories
+# -A -> Omit directories "." and ".." from output
+ls -uAmtF
