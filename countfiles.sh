@@ -6,8 +6,8 @@
 fileCount=$(find . -type f -name "*" | wc -l)
 
 # Find only directories
-dirCount=$(find . -type d -name "*" | wc -l)
+dirCount=$(find . -type d -name "*" | wc -l) # Already includes the current directory so no need to increment the final result by 1
 
-count=$((fileCount + dirCount + 1 )) # Add 1 to ensure current dir is included
+count=$((fileCount + dirCount )) 
 
 echo ${count} 
