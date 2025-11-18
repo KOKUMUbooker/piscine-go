@@ -1,7 +1,14 @@
-#! /bin/bash
+#! /bin/sh
 
-# -ut -> Sort items newest first by access time
-# -m -> replace " " listing separation with ","
-# -F -> Add suffix / on directories
-# -A -> Omit directories "." and ".." from output
-ls -uAmtF
+# ls -utAF
+# -ut -> sort items by access time with the newest first
+# -F -> Add suffix / on directories 
+# -A -> omit directoriies "." and ".."
+# ls has different view mode ie if viewed on terminal results is in multicolumn
+# but when its output is piped, items are separated with newline
+
+# paste -sd,
+# -s -> merge lines into a single line which paste by default separates using tab
+# -d, -> instead of separating using tab use the delimeter we've set ie ","
+
+ls -utAF | paste -sd,
