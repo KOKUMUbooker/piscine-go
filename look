@@ -6,4 +6,4 @@
 
 # -o -> means "or"
 # -a -> means "and"
-find . -type f,d \( -name "a*" -o  -name "*z" -o \( -name "z*" -a -name "*a!" \) \)
+find . \( -name "a*" -o  -name "*z" -o \( -name "z*" -a -name "*a!" \) \)
