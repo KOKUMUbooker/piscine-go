@@ -1,0 +1,9 @@
+# /bin/bash
+
+# start with "a" or
+# end with "z" or
+# (start with "z" and end "a!")
+
+# -o -> means "or"
+# -a -> means "and"
+find . -type f,d \( -name "a*" -o  -name "*z" -o \( -name "z*" -a -name "*a!" \) \)
