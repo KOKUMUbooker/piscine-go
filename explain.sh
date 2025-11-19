@@ -9,20 +9,17 @@
 #         - Hellen Maher
 #         - Erika Owens
 
-# clone project
-git clone git@github.com:01-edu/the-final-cl-test.git
-
 # Display first & last name of your key witness
-grep "Annabel Church" the-final-cl-test/mystery/people | awk '{print $1, $2}'
+grep "Annabel Church" people | awk '{print $1, $2}'
 
 # Display interview number of this witness
-grep "Church" the-final-cl-test/mystery/interviews/* | awk '{print $1}' | sed 's/.*interview-//' | sed 's/:.*//'
+grep "Church" interviews/* | awk '{print $1}' | sed 's/.*interview-//' | sed 's/:.*//'
 
 # Display colour and the make of the car of the main suspect
-grep "License Plate L337" -A 6  the-final-cl-test/mystery/vehicles | grep "Owner: Dartey Henv" -B 2 | sed "3d" | awk '{print $2}' | sort | paste -sd\ \
+grep "License Plate L337" -A 6  vehicles | grep "Owner: Dartey Henv" -B 2 | sed "3d" | awk '{print $2}' | sort | paste -sd\ \
 
 # List out 3 other suspects
-grep "License Plate L337" -A 6 the-final-cl-test/mystery/vehicles | 
+grep "License Plate L337" -A 6 vehicles | 
     grep "Color: Blue" -A 4 -B 2 | 
     grep "Height: 6'" -A 2 -B 4 |
     grep "Make: Honda" -A 5 -B 1 | 
