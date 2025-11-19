@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Get interview number of this witness
-iNum=$(grep "Church" interviews/* | awk '{print $1}' | sed 's/.*interview-//' | sed 's/:.*//')
+iNum=$(head -n 179 streets/Buckingham_Place | tail -n 1 | grep -o '[0-9]\+')
 
 # Print out env variable
 echo $iNum
