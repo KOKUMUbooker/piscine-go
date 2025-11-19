@@ -13,6 +13,7 @@ func PrintComb() {
 
     for j := '0'; j <= '9'; j++ {
       b = j;
+      
 
       for k := '0'; k <= '9'; k++ {
         c = k;
@@ -25,8 +26,13 @@ func PrintComb() {
           z01.PrintRune(a);
           z01.PrintRune(b);
           z01.PrintRune(c);
-          z01.PrintRune(',');
-          z01.PrintRune(' ');
+      
+          // Only print ", " if it's NOT the last combination
+          // 789 is the last item as stated in instructions
+					if !(a == '7' && b == '8' && c == '9') {
+						z01.PrintRune(',')
+						z01.PrintRune(' ')
+					}
         }
       }
     }
