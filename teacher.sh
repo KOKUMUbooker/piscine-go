@@ -10,7 +10,7 @@ export interviewnum=$iNum
 echo $interviewnum
 
 # Print out the contents f the interview
-cat "interviews/interview-$interviewnum"
+cat "interviews/interview-$iNum"
 
 # Print out contents of main suspect
 echo "$MAIN_SUSPECT"
