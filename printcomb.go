@@ -1,40 +1,32 @@
-// Empty file
 package piscine
 
-import (
-	"github.com/01-edu/z01"
-)
+import "github.com/01-edu/z01"
+
 
 func PrintComb() {
-  var a,b,c rune;
+  first := false;
 
   for i := '0'; i <= '9'; i++ {
-    a = i;
-
     for j := '0'; j <= '9'; j++ {
-      b = j;
-      
-
       for k := '0'; k <= '9'; k++ {
-        c = k;
 
-        if a == b && b == c {
+        if i == j && j == k {
           continue;
         }
 
-        if a < b && b < c {
-          z01.PrintRune(a);
-          z01.PrintRune(b);
-          z01.PrintRune(c);
-      
-          // Only print ", " if it's NOT the last combination
-          // 789 is the last item as stated in instructions
-					if !(a == '7' && b == '8' && c == '9') {
-						z01.PrintRune(',')
-						z01.PrintRune(' ')
-					}
+        if i < j && j < k {
+          if first { // First time don't prepend ", ", but subsequent cycles prepend it
+            z01.PrintRune(',')
+            z01.PrintRune(' ')
+          }
+
+          first = true
+          z01.PrintRune(i);
+          z01.PrintRune(j);
+          z01.PrintRune(k);
         }
       }
     }
   }
 }
+
