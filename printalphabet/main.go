@@ -9,4 +9,6 @@ func main() {
 	for i := 97; i <= 122; i++ {
 		z01.PrintRune(rune(i))
 	}
+	// 10 is ascii character for \n
+	z01.PrintRune(10)
 }
