@@ -11,7 +11,7 @@ import "github.com/01-edu/z01"
 
 func PrintNbr(n int) {
 	splitDigits := splitIntToDigits(n) // Digits will be in reverse
-	splitDigitsRunes := make([]rune,0)
+	splitDigitsRunes := make([]rune, 0)
 
 	if n < 0 {
 		splitDigitsRunes = append(splitDigitsRunes, '-') // Prepend '-' for negative numbers
@@ -20,24 +20,24 @@ func PrintNbr(n int) {
 	for i := len(splitDigits); i >= 0; i-- {
 		r := '0'
 		if i != 0 {
-			r =  rune('0' + i)
-		} 
+			r = rune('0' + i)
+		}
 		splitDigitsRunes = append(splitDigitsRunes, r)
 	}
 
-	for _,r := range splitDigitsRunes {
+	for _, r := range splitDigitsRunes {
 		z01.PrintRune(r)
 	}
 }
 
 /*
- Splitting int to digits is achieved using 2 expressions - division by 10 & modulus by 10
-  - These 2 operation are repeated until the quotient of the division expression is 0 
+Splitting int to digits is achieved using 2 expressions - division by 10 & modulus by 10
+  - These 2 operation are repeated until the quotient of the division expression is 0
   - Modulus expression gives the split digit under that iteration
 */
 func splitIntToDigits(n int) []int {
 	digits := make([]int, 0)
-	quot :=  n
+	quot := n
 	mod := 0
 
 	if n < 0 {
@@ -55,6 +55,5 @@ func splitIntToDigits(n int) []int {
 		quot = quot / 10
 	}
 
-	return  digits
+	return digits
 }
-
