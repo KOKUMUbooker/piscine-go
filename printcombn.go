@@ -2,7 +2,7 @@ package piscine
 
 import "github.com/01-edu/z01"
 
-func PrintComb() {
+func PrintCombN() {
 	isFirst := true
 
 	// Loop 1: First digit (i) - Iterates 10 times ('0' to '9')
