@@ -52,6 +52,7 @@ func splitIntToDigits(n int) []int {
 			mod = -(quot % 10)
 		}
 
+		// Ensure value sent it digits is positive since mod is always negative
 		digits = append(digits, -mod)
 		quot = quot / 10
 	}
