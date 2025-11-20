@@ -37,17 +37,13 @@ func splitIntToDigits(n int) []int {
 	quot := n
 	mod := 0
 
-	if n < 0 {
-		quot = -n
-	}
-
 	if n == 0 {
 		return []int{0}
 	}
 
 	// Do this until quotient is zero
 	for quot != 0 {
-		mod = quot % 10
+		mod = -(quot % 10) // Use '-' to address potential overflow issue arising from doing -(n)
 		digits = append(digits, mod)
 		quot = quot / 10
 	}
