@@ -10,19 +10,19 @@ func PrintComb2() {
 			for k := '0'; k <= '9'; k++ {
 				for l := '0'; l <= '9'; l++ {
 					// If ij similar to kl skip iteration
-					if (i == k && j == l) {
-						continue;
+					if i == k && j == l {
+						continue
 					}
 
 					if !first { // Only add ", " if not in first set of iteration
 						z01.PrintRune(',')
 						z01.PrintRune(' ')
 					}
-		
-					first = false;
+
+					first = false
 					z01.PrintRune(i)
 					z01.PrintRune(j)
-					
+
 					z01.PrintRune(' ')
 
 					z01.PrintRune(k)
