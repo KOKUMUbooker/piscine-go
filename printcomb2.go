@@ -14,6 +14,12 @@ func PrintComb2() {
 						continue
 					}
 
+					// Check to ensure ij is less that kl
+					// ij < kl  if i < k OR (i == k && j < l)
+					if !(i < k || (i == k && j < l)) {
+						continue
+					}
+
 					if !first { // Only add ", " if not in first set of iteration
 						z01.PrintRune(',')
 						z01.PrintRune(' ')
