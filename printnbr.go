@@ -20,7 +20,7 @@ func PrintNbr(n int) {
 	for i := len(splitDigits); i >= 0; i-- {
 		r := '0'
 		if i != 0 {
-			r =  rune('0' + i);
+			r =  rune('0' + i)
 		} 
 		splitDigitsRunes = append(splitDigitsRunes, r)
 	}
