@@ -17,11 +17,8 @@ func PrintNbr(n int) {
 		splitDigitsRunes = append(splitDigitsRunes, '-') // Prepend '-' for negative numbers
 	}
 
-	for i := len(splitDigits); i >= 0; i-- {
-		r := '0'
-		if i != 0 {
-			r = rune('0' + i)
-		}
+	for i := len(splitDigits) - 1; i >= 0; i-- {
+		r := rune('0' + splitDigits[i])
 		splitDigitsRunes = append(splitDigitsRunes, r)
 	}
 
