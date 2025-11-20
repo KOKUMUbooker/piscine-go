@@ -1,10 +1,10 @@
 package piscine
 
 func StrLen(s string) int {
-  l := 0
-  for i,_ := range s {
-      l = i
+  var l int
+  for range s {
+      l++
   }
   
-  return l + 1
+  return l
 }
