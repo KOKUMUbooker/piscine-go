@@ -4,7 +4,7 @@ package piscine
 // - Squares get bigger as numbers get bigger
 // - Repeatedly increase the number whilst squaring it until you hit the target value or go past it
 // - If target is hit -> success
-// - If target is passed -. no integer square root exists
+// - If target is passed -> no integer square root exists
 func Sqrt(nb int) int {
 	if nb < 1 {
 		return 0
