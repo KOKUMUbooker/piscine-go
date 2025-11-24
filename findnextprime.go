@@ -1,20 +1,21 @@
 package piscine
 
+const MaxInt32 = 2147483647
+
 func FindNextPrime(nb int) int {
-	MaxInt32 := power(2, 31) - 1 // Limit for prime
 	if nb < 2 {
 		return 2
 	}
 
 	prime := nb
 	for {
-		if isPrime(prime) {
-			break
-		}
-
 		// Check for overflow
 		if prime == MaxInt32 {
 			return -1
+		}
+
+		if isPrime(prime) {
+			break
 		}
 
 		prime++
@@ -38,11 +39,4 @@ func isPrime(nb int) bool {
 	}
 
 	return true
-}
-
-func power(base, exp int) int {
-	if exp == 0 {
-		return 1
-	}
-	return base * power(base, exp-1)
 }
