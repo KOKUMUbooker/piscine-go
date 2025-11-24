@@ -1,19 +1,21 @@
 package piscine
 
+import "math"
+
 func FindNextPrime(nb int) int {
 	if nb < 2 {
 		return 2
 	}
 
 	prime := nb
-	for {
+	for prime < math.MaxInt32 {
 		if isPrime(prime) {
-			break
+			return prime
 		}
 		prime++
 	}
 
-	return prime
+	return -1
 }
 
 func isPrime(nb int) bool {
