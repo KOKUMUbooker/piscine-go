@@ -1,23 +1,12 @@
 package piscine
 
-const MaxInt32 = 2147483647
-
 func FindNextPrime(nb int) int {
 	if nb < 2 {
 		return 2
 	}
 
 	prime := nb
-	for {
-		// Check for overflow
-		if prime == MaxInt32 {
-			return -1
-		}
-
-		if isPrime(prime) {
-			break
-		}
-
+	for !isPrime(prime) {
 		prime++
 	}
 
@@ -25,18 +14,25 @@ func FindNextPrime(nb int) int {
 }
 
 func isPrime(nb int) bool {
-	if nb <= 1 {
+	// No prime numbers before 2
+	if nb < 2 {
+		return false
+	}
+	// Return early for 2
+	if nb == 2 {
+		return true
+	}
+	// Even no. greater than 2 get excluded
+	if nb%2 == 0 {
 		return false
 	}
 
-	// Iterate over only odd numbers & check whether one of the iteration values
-	// can divide nb without a remainder
-	// If found value has more divisors than two(1 & the num itself), thus making it not a prime
-	for i := 2; i < nb-1; i++ {
+	// "i*i <= nb" similar to i <= sqrt(nb)
+	// Only loop up to the square root of the value
+	for i := 3; i*i <= nb; i += 2 {
 		if nb%i == 0 {
 			return false
 		}
 	}
-
 	return true
 }
