@@ -4,11 +4,11 @@ package piscine
 // eg 5! = 5 * 4 * 3 * 2 *1
 func IterativeFactorial(nb int) int {
 	// Factorial of 25 results in a int overflow on the positive side
-	if nb <= 0 || nb >= 25 {
+	if nb < 0 || nb >= 25 {
 		return 0
 	}
 
-	if nb == 1 {
+	if nb == 1 || nb == 0 {
 		return 1
 	}
 
