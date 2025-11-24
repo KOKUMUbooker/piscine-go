@@ -5,9 +5,9 @@ func RecursivePower(nb int, power int) int {
 		return 0
 	}
 
-	// Any num^1 = num
-	if power == 1 {
-		return nb
+	// Any num^0 = 1
+	if power == 0 {
+		return 1
 	}
 
 	return nb * RecursivePower(nb, power-1)
