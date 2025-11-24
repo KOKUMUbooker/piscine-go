@@ -7,14 +7,20 @@ func FindNextPrime(nb int) int {
 	}
 
 	prime := nb
-	for prime < MaxInt32 {
+	for {
 		if isPrime(prime) {
-			return prime
+			break
 		}
+
+		// Check for overflow
+		if prime == MaxInt32 {
+			return -1
+		}
+
 		prime++
 	}
 
-	return -1
+	return prime
 }
 
 func isPrime(nb int) bool {
