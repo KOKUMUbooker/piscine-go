@@ -1,14 +1,13 @@
 package piscine
 
-import "math"
-
 func FindNextPrime(nb int) int {
+	MaxInt32 := power(2, 31) - 1 // Limit for prime
 	if nb < 2 {
 		return 2
 	}
 
 	prime := nb
-	for prime < math.MaxInt32 {
+	for prime < MaxInt32 {
 		if isPrime(prime) {
 			return prime
 		}
@@ -33,4 +32,11 @@ func isPrime(nb int) bool {
 	}
 
 	return true
+}
+
+func power(base, exp int) int {
+	if exp == 0 {
+		return 1
+	}
+	return base * power(base, exp-1)
 }
