@@ -1,5 +1,6 @@
 package piscine
 
+// 0 if a == b, -1 if a < b, and +1 if a > b
 func Compare(a, b string) int {
 	res := 0
 	aR := []rune(a)
@@ -23,7 +24,7 @@ func Compare(a, b string) int {
 			}
 		}
 		if res == 0 { // if the 2 diff-len strings are equal to the minLen of both, just say a > b
-			res = 1
+			res = -1
 		}
 
 	} else { // strings.Compare("abc", "abcd") = -1
@@ -34,7 +35,7 @@ func Compare(a, b string) int {
 			}
 		}
 		if res == 0 { // if the 2 diff-len strings are equal to the minLen of both, just say a < b
-			res = -1
+			res = 1
 		}
 	}
 
