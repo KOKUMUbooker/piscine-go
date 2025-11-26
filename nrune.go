@@ -1,7 +1,7 @@
 package piscine
 
 func NRune(s string, n int) rune {
-	if n > len(s) - 1 {
+	if n > len(s)-1 {
 		return 0
 	}
 
@@ -11,12 +11,12 @@ func NRune(s string, n int) rune {
 	}
 
 	var runeVal rune
-	for i,r := range s {
+	for i, r := range s {
 		if i == iVal {
 			runeVal = r
 			break
 		}
-	} 
+	}
 
-	return  runeVal
+	return runeVal
 }
