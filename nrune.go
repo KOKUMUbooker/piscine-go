@@ -1,7 +1,8 @@
 package piscine
 
+// piscine.NRune("Ola!", 4)
 func NRune(s string, n int) rune {
-	if n > len(s)-1 {
+	if n > len(s) {
 		return 0
 	}
 
