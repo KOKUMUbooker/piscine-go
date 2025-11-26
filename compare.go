@@ -18,34 +18,34 @@ func Compare(a, b string) int {
 		}
 	} else if len(aR) > len(bR) { // strings.Compare("abcd", "abc") = +1
 		for i, r := range bR {
-			res := compareRunes(r, aR[i])
+			res = compareRunes(aR[i],r)
 			if res != 0 {
 				break
 			}
 		}
 		if res == 0 { // if the 2 diff-len strings are equal to the minLen of both, just say a > b
-			res = -1
+			res = 1
 		}
 
 	} else { // strings.Compare("abc", "abcd") = -1
 		for i, r := range aR {
-			res := compareRunes(r, bR[i])
+			res = compareRunes(r, bR[i])
 			if res != 0 {
 				break
 			}
 		}
 		if res == 0 { // if the 2 diff-len strings are equal to the minLen of both, just say a < b
-			res = 1
+			res = -1
 		}
 	}
 
 	return res
 }
 
-func compareRunes(x, y rune) int {
-	if x == y {
+func compareRunes(a, b rune) int {
+	if a == b {
 		return 0
-	} else if x > y {
+	} else if a > b {
 		return 1
 	} else {
 		return -1
