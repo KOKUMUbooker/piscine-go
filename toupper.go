@@ -14,5 +14,5 @@ func ToUpper(s string) string {
 		}
 	}
 
-	return  capStr
+	return capStr
 }
