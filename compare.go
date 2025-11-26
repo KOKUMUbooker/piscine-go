@@ -18,7 +18,7 @@ func Compare(a, b string) int {
 		}
 	} else if len(aR) > len(bR) { // strings.Compare("abcd", "abc") = +1
 		for i, r := range bR {
-			res = compareRunes(aR[i],r)
+			res = compareRunes(aR[i], r)
 			if res != 0 {
 				break
 			}
