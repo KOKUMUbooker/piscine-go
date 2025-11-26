@@ -11,36 +11,36 @@ func AtoiBase(s string, base string) int {
 	baseVal := len(base)
 	var num int
 
-	for _,r := range s {
-		pos := index(base,r)
+	for _, r := range s {
+		pos := index(base, r)
 		digits = append(digits, pos)
-	}	
+	}
 
-	for i,digit := range digits {
-		op :=  pow5(baseVal,len(digits) - (i + 1))
+	for i, digit := range digits {
+		op := pow5(baseVal, len(digits)-(i+1))
 		num += (digit * op)
 	}
 
-	return  1
+	return 1
 }
 
-func pow5(base,exp int) int {
+func pow5(base, exp int) int {
 	if exp == 0 {
 		return 1
 	}
 
-	return  base * pow5(base,exp-1)
+	return base * pow5(base, exp-1)
 }
 
 func index(base string, r rune) int {
 	pos := -1
-	for i,sliceR := range base {
+	for i, sliceR := range base {
 		if sliceR == r {
-			pos = i 
+			pos = i
 			break
 		}
 	}
-	return  pos
+	return pos
 }
 
 func isBaseValid2(base string) bool {
