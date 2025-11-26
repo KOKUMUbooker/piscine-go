@@ -5,7 +5,7 @@ func NRune(s string, n int) rune {
 		return 0
 	}
 
-	iVal := n
+	iVal := n - 1 // eg n = 2 should mean 2nd letter ie i = 1
 	if n < 0 {
 		iVal = len(s) + n
 	}
