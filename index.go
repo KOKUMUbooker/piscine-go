@@ -8,8 +8,12 @@ package piscine
 // fmt.Println(piscine.Index("Salut!", "alu"))
 // fmt.Println(piscine.Index("Ola!", "hOl"))
 func Index(s string, toFind string) int {
-	if len(toFind) < 1 {
-		return -1
+	if len(s) == 0 && len(toFind) == 0 {
+		return 0
+	}
+
+	if len(toFind) == 0 {
+		return 0
 	}
 
 	sRSlice := []rune(s)
