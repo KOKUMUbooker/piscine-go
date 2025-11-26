@@ -1,18 +1,18 @@
 package piscine
 
-import "fmt"
+import "github.com/01-edu/z01"
 
 const n = 8
 
 func EightQueens() {
-    board := make([]int,0)
-    res := make([][]int, 0)
-    var visited [n+1]bool // All Elements defaut to false & used n + 1 since index 0 is unused
+    board := []int{}
+    res := [][]int{}
+    var visited [n+1]bool
 
     nQueenUtil(1,board,&res,visited)
-    // fmt.Println("\nBoard : ", board)
+
     for _,resBoard := range res {
-        fmt.Println(resBoard)
+        printBoard(resBoard)
     }
 }
 
@@ -68,4 +68,11 @@ func absInt(x int) int {
 		return -x
 	}
 	return x
+}
+
+func printBoard(board []int) {
+    for _,num := range board {
+        z01.PrintRune(rune('0' + num))
+    }
+    z01.PrintRune('\n')
 }
