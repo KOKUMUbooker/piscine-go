@@ -92,7 +92,7 @@ func isFlag(str string) bool {
 func Usage() {
 	fmt.Fprintf(os.Stderr, "--insert\n")
 	fmt.Fprintf(os.Stderr, "  -i\n")
-	fmt.Fprintf(os.Stderr, "\t This flag inserts the string into the string passed as argument\n")
+	fmt.Fprintf(os.Stderr, "\t This flag inserts the string into the string passed as argument.\n")
 
 	fmt.Fprintf(os.Stderr, "--order\n")
 	fmt.Fprintf(os.Stderr, "  -o\n")
