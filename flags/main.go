@@ -3,136 +3,79 @@ package main
 import (
 	"fmt"
 	"os"
-)
 
-const (
-	insert = "--insert"
-	i      = "-i"
-	order  = "--order"
-	o      = "-o"
-	help   = "--help"
-	h      = "-h"
+	"github.com/01-edu/z01"
 )
 
 func main() {
-	params := []string{}
-
-	if len(os.Args) > 1 {
-		params = os.Args[1:]
+	args := os.Args
+	args = args[1:]
+	l := 0
+	for i := range args {
+		l = i + 1
 	}
-
-	// If no args provided print usage
-	if len(params) == 0 || (len(params) == 1 && (params[0] == h || params[0] == help)) {
+	if l == 0 || args[0] == "-h" || args[0] == "--help" {
 		Usage()
-		return
-	}
+	} else {
+		var runes []rune
+		order := false
+		order_prev := false
+		insert := false
 
-	// Format params
-	params = formatParams(os.Args[1:])
+		for _, arg := range args {
+			length := len([]rune(arg))
 
-	var insertFlag string
-	var orderFlag bool
-	nonFlagArg := ""
-	pLen := len(params)
+			if length > 9 && arg[:9] == "--insert=" {
+				runes_temp := []rune(arg[9:])
 
-	for idx, param := range params {
-		insFlag := param == insert || param == i
-		isOrderFlag := param == order || param == o
-		val, iOfEqual, foundEqual := checkStrAfterEqual(param)
-		// fmt.Printf("val : %v, iOfEqual : %v, foundEqual : %v\n",val,iOfEqual,foundEqual)
+				for i := 0; i < length-9; i++ {
+					runes = append(runes, runes_temp[i])
+				}
+				insert = true
 
-		if insFlag || (foundEqual && (param[:iOfEqual] == i || param[:iOfEqual] == insert)) {
-			if foundEqual {
-				insertFlag = val
-			} else if pLen >= idx+1 && !isFlag(params[idx+1]) {
-				insertFlag = params[idx+1]
+			} else if length > 3 && arg[:3] == "-i=" {
+				runes_temp := []rune(arg[3:])
+
+				for i := 0; i < length-3; i++ {
+					runes = append(runes, runes_temp[i])
+				}
+				insert = true
+
+			} else if (length == 7 && arg[:7] == "--order") || (length == 2 && arg[:2] == "-o") {
+				order = true
+				order_prev = true
+				continue
+			} else if order_prev {
+				runes_temp := []rune(arg)
+				for i := range runes_temp {
+					runes = append(runes, runes_temp[i])
+				}
+			} else {
+				runes_print := []rune(arg)
+				if order {
+					for i := range runes_print {
+						runes = append(runes, runes_print[i])
+					}
+				}
+				for i := range runes_print {
+					z01.PrintRune(runes_print[i])
+				}
 			}
-		} else if isOrderFlag {
-			orderFlag = true
-		} else if idx >= 0 {
-			nonFlagArg = param
+			order_prev = false
+
 		}
-	}
-
-	// fmt.Printf("insert flag : %v ,type : %T\n", insertFlag, insertFlag)
-	// fmt.Printf("order flag : %v ,type : %T\n", orderFlag, orderFlag)
-	// fmt.Printf("nonFlagArg : %v ,type : %T\n", nonFlagArg, nonFlagArg)
-
-	insPresent := len(insertFlag) > 0
-	strPresent := len(nonFlagArg) > 0
-
-	strToPrint := ""
-	if insPresent && orderFlag && strPresent { // Order the combination of the two
-		sR := []rune(nonFlagArg + insertFlag)
-		bubbleSort(sR)
-		strToPrint = string(sR)
-	} else if insPresent && strPresent { // Combine the 2 args
-		strToPrint = nonFlagArg + insertFlag
-	} else if orderFlag && strPresent { // Order nonFlagArg
-		sR := []rune(nonFlagArg)
-		bubbleSort(sR)
-		strToPrint = string(sR)
-	} else { // Print nonFlagArg if its there
-		strToPrint = nonFlagArg
-	}
-
-	fmt.Fprintf(os.Stdout, "%v\n", strToPrint)
-}
-
-// eg $ go run . "--insert=So m1mJVdt9jz" "--order" ""
-func formatParams(params []string) []string {
-	formattedP := []string{}
-	tempR := []rune{}
-
-	for _, str := range params {
-		modStr := " " + str + " " // Add spaces start & end
-		tempR = append(tempR, []rune(modStr)...)
-	}
-
-	lastSpacePos := -1
-	for i, r := range tempR {
-		if i == 0 {
-			continue
+		if order {
+			bubbleSort(runes)
 		}
 
-		if r == ' ' && tempR[i-1] != ' ' {
-			targetR := tempR[lastSpacePos+1 : i]
-			// fmt.Println("TargetR : ",string(targetR))
-			trimmedStr := trimStr(string(targetR))
-			formattedP = append(formattedP, trimmedStr)
+		if order || insert {
+			for i := range runes {
+				z01.PrintRune(runes[i])
+			}
 		}
 
-		// Update last space as the last thing before storing string
-		if r == ' ' {
-			lastSpacePos = i
-		}
+		z01.PrintRune(10)
 	}
-
-	return formattedP
-}
-
-func trimStr(str string) string {
-	res := []rune{}
-	for _, r := range str {
-		if r == ' ' {
-			continue
-		}
-		res = append(res, r)
-	}
-	return string(res)
-}
-
-func checkStrAfterEqual(str string) (val string, iOfEqual int, found bool) {
-	for i, r := range str {
-		if r == '=' {
-			return str[i+1:], i, true
-		}
-	}
-	return "", -1, false
-}
-
-func isFlag(str string) bool {
-	return str == o || str == order || str == insert || str == i || str == h || str == help
 }
 
 func Usage() {
