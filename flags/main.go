@@ -27,6 +27,9 @@ func main() {
 		return
 	}
 
+	// Format params
+	params = formatParams(os.Args[1:])
+
 	var insertFlag string
 	var orderFlag bool
 	nonFlagArg := ""
@@ -74,6 +77,49 @@ func main() {
 	}
 
 	fmt.Fprintf(os.Stdout, "%v\n", strToPrint)
+}
+
+// eg $ go run . "--insert=So m1mJVdt9jz" "--order" ""
+func formatParams(params []string) []string {
+	formattedP := []string{}
+	tempR := []rune{}
+
+	for _, str := range params {
+		modStr := " " + str + " " // Add spaces start & end
+		tempR = append(tempR, []rune(modStr)...)
+	}
+
+	lastSpacePos := -1
+	for i, r := range tempR {
+		if i == 0 {
+			continue
+		}
+
+		if r == ' ' && tempR[i-1] != ' ' {
+			targetR := tempR[lastSpacePos+1 : i]
+			// fmt.Println("TargetR : ",string(targetR))
+			trimmedStr := trimStr(string(targetR))
+			formattedP = append(formattedP, trimmedStr)
+		}
+
+		// Update last space as the last thing before storing string
+		if r == ' ' {
+			lastSpacePos = i
+		}
+	}
+
+	return formattedP
+}
+
+func trimStr(str string) string {
+	res := []rune{}
+	for _, r := range str {
+		if r == ' ' {
+			continue
+		}
+		res = append(res, r)
+	}
+	return string(res)
 }
 
 func checkStrAfterEqual(str string) (val string, iOfEqual int, found bool) {
