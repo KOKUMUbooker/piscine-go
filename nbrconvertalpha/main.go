@@ -19,6 +19,7 @@ func main() {
 	isUpperFlag := false
 	if len(params) > 0 && params[0] == "--upper" {
 		isUpperFlag = true
+		params = os.Args[2:] // Exclude "--upper" flag from params
 	}
 
 	for _, str := range params {
