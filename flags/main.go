@@ -10,6 +10,8 @@ const (
 	i      = "-i"
 	order  = "--order"
 	o      = "-o"
+	help   = "--help"
+	h      = "-h"
 )
 
 func main() {
@@ -20,7 +22,7 @@ func main() {
 	}
 
 	// If no args provided print usage
-	if len(params) == 0 {
+	if len(params) == 0 || (len(params) == 1 && (params[0] == h || params[0] == help)) {
 		Usage()
 		return
 	}
@@ -84,7 +86,7 @@ func checkStrAfterEqual(str string) (val string, iOfEqual int, found bool) {
 }
 
 func isFlag(str string) bool {
-	return str == o || str == order || str == insert || str == i
+	return str == o || str == order || str == insert || str == i || str == h || str == help
 }
 
 func Usage() {
