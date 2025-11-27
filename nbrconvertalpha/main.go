@@ -22,6 +22,10 @@ func main() {
 		params = os.Args[2:] // Exclude "--upper" flag from params
 	}
 
+	if len(params) == 0 {
+		return
+	}
+
 	for _, str := range params {
 		var char rune
 		if !isNum(str) {
