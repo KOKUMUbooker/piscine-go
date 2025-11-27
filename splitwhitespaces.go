@@ -24,7 +24,7 @@ func SplitWhiteSpaces(s string) []string {
 
 		word := ""
 		if end == sRLen {
-			word = string(sR[i : end])
+			word = string(sR[i:end])
 		} else {
 			word = string(sR[i:end])
 		}
