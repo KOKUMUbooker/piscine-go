@@ -35,7 +35,7 @@ func main() {
 	for i := 1; i >= 0; i-- {
 		rVal := '0'
 		modVal := tempArr[i]
-		for i := 1; i <= modVal; i++ {
+		for j := 1; j <= modVal; j++ {
 			rVal++
 		}
 		z01.PrintRune(rVal)
@@ -57,7 +57,7 @@ func main() {
 	for i := 1; i >= 0; i-- {
 		rVal := '0'
 		modVal := tempArr[i]
-		for i := 1; i <= modVal; i++ {
+		for j := 1; j <= modVal; j++ {
 			rVal++
 		}
 		z01.PrintRune(rVal)
