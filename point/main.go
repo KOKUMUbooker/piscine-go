@@ -15,30 +15,6 @@ func setPoint(ptr *point) {
 }
 
 func main() {
-	incrementRuneVal := func(n int) rune {
-		r := '0'
-		for i := 1; i <= n; i++ {
-			r++
-		}
-		return r
-	}
-
-	prinIntRunes := func(n int) {
-		base := 10
-		mod := 0
-
-		digits := []int{}
-		for quot := n; quot > 0; quot /= base {
-			mod = quot % base
-			digits = append(digits, mod)
-		}
-
-		for i := len(digits) - 1; i >= 0; i-- {
-			rVal := incrementRuneVal(digits[i])
-			z01.PrintRune(rVal)
-		}
-	}
-
 	points := &point{}
 
 	setPoint(points)
@@ -46,12 +22,46 @@ func main() {
 	for _, r := range "x = " {
 		z01.PrintRune(r)
 	}
-	prinIntRunes(points.x)
+
+	base := 10
+	mod := 0
+	count := 0
+	tempArr := [2]int{} // Use arrays to avoid using append when using slices
+	for quot := points.x; quot > 0; quot /= base {
+		mod = quot % base
+		tempArr[count] = mod
+		count++
+	}
+	for i := 1; i >= 0; i-- {
+		rVal := '0'
+		modVal := tempArr[i]
+		for i := 1; i <= modVal; i++ {
+			rVal++
+		}
+		z01.PrintRune(rVal)
+	}
 
 	for _, r := range ", y = " {
 		z01.PrintRune(r)
 	}
-	prinIntRunes(points.y)
+
+	// Reset values
+	tempArr = [2]int{}
+	count = 0
+	mod = 0
+	for quot := points.y; quot > 0; quot /= base {
+		mod = quot % base
+		tempArr[count] = mod
+		count++
+	}
+	for i := 1; i >= 0; i-- {
+		rVal := '0'
+		modVal := tempArr[i]
+		for i := 1; i <= modVal; i++ {
+			rVal++
+		}
+		z01.PrintRune(rVal)
+	}
 
 	z01.PrintRune('\n')
 }
