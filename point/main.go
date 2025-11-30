@@ -14,45 +14,37 @@ func setPoint(ptr *point) {
 
 func main() {
 	points := &point{}
-
 	setPoint(points)
 
-	z01.PrintRune('x')
-	z01.PrintRune(' ')
-	z01.PrintRune('=')
-	z01.PrintRune(' ')
-	ToRune(points.x)
-	z01.PrintRune(',')
-	z01.PrintRune(' ')
-	z01.PrintRune('y')
-	z01.PrintRune(' ')
-	z01.PrintRune('=')
-	z01.PrintRune(' ')
-	ToRune(points.y)
+	for _, r := range "x = " {
+		z01.PrintRune(r)
+	}
+
+	printTwoDigits(points.x)
+
+	for _, r := range ", y = " {
+		z01.PrintRune(r)
+	}
+
+	printTwoDigits(points.y)
+
 	z01.PrintRune('\n')
 }
 
-func PrintInt(r int) {
-	c := '0'
-	if r == 0 {
-		z01.PrintRune(c)
-		return
-	}
-	for i := 1; i <= r%10; i++ {
-		c++
-	}
-	for i := -1; i >= r%10; i-- {
-		c++
-	}
-	if r/10 != 0 {
-		PrintInt(r / 10)
-	}
-	z01.PrintRune(c)
+func printTwoDigits(n int) {
+	base := 10
+	tens := n / base
+	ones := n % base
+
+	printDigit(tens)
+
+	printDigit(ones)
 }
 
-func ToRune(n int) {
-	if n < 0 {
-		z01.PrintRune('-')
+func printDigit(d int) {
+	ch := '0'
+	for i := 0; i < d; i++ {
+		ch++
 	}
-	PrintInt(n)
+	z01.PrintRune(ch)
 }
