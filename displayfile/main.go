@@ -14,6 +14,7 @@ func main() {
 	params := os.Args[1:]
 	if len(params) > 1 {
 		fmt.Println("Too many arguments")
+		return
 	}
 
 	data, err := os.ReadFile(params[0])
