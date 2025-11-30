@@ -21,46 +21,44 @@ func main() {
 	z01.PrintRune(' ')
 	z01.PrintRune('=')
 	z01.PrintRune(' ')
-
-	base := 10
-	mod := 0
-	count := 0
-	tempArr := [2]int{} // Use arrays to avoid using append when using slices
-	for quot := points.x; quot > 0; quot /= base {
-		mod = quot % base
-		tempArr[count] = mod
-		count++
-	}
-	for i := 1; i >= 0; i-- {
-		rVal := '0'
-		modVal := tempArr[i]
-		for j := 1; j <= modVal; j++ {
-			rVal++
-		}
-		z01.PrintRune(rVal)
-	}
-
-	for _, r := range " y = " {
-		z01.PrintRune(r)
-	}
-
-	// Reset values
-	tempArr = [2]int{}
-	count = 0
-	mod = 0
-	for quot := points.y; quot > 0; quot /= base {
-		mod = quot % base
-		tempArr[count] = mod
-		count++
-	}
-	for i := 1; i >= 0; i-- {
-		rVal := '0'
-		modVal := tempArr[i]
-		for j := 1; j <= modVal; j++ {
-			rVal++
-		}
-		z01.PrintRune(rVal)
-	}
-
+	ToRune(points.x)
+	z01.PrintRune(',')
+	z01.PrintRune(' ')
+	z01.PrintRune('y')
+	z01.PrintRune(' ')
+	z01.PrintRune('=')
+	z01.PrintRune(' ')
+	ToRune(points.y)
 	z01.PrintRune('\n')
+}
+
+func printInt(n int) {
+	if n == 0 {
+		z01.PrintRune('0')
+		return
+	}
+
+	if n < 0 {
+		z01.PrintRune('-')
+		n = -n
+	}
+
+	if n/10 != 0 {
+		printInt(n / 10)
+	}
+
+	// Print the last digit
+	digit := n % 10
+	ch := '0'
+	for i := 0; i < digit; i++ {
+		ch++
+	}
+	z01.PrintRune(ch)
+}
+
+func ToRune(n int) {
+	if n < 0 {
+		z01.PrintRune('-')
+	}
+	printInt(n)
 }
