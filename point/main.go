@@ -39,7 +39,7 @@ func main() {
 		z01.PrintRune(rVal)
 	}
 
-	for _, r := range ", y = " {
+	for _, r := range " y = " {
 		z01.PrintRune(r)
 	}
 
