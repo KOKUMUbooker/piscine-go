@@ -14,52 +14,53 @@ func setPoint(ptr *point) {
 
 func main() {
 	points := &point{}
-
 	setPoint(points)
 
-	for _, r := range "x = " {
-		z01.PrintRune(r)
-	}
+	// "x = "
+	z01.PrintRune('x')
+	z01.PrintRune(' ')
+	z01.PrintRune('=')
+	z01.PrintRune(' ')
 
-	base := 10
-	mod := 0
-	count := 0
-	tempArr := [2]int{} // Use arrays to avoid using append when using slices
-	for quot := points.x; quot > 0; quot /= base {
-		mod = quot % base
-		tempArr[count] = mod
-		count++
-	}
-	for i := 1; i >= 0; i-- {
-		rVal := '0'
-		modVal := tempArr[i]
-		for j := 1; j <= modVal; j++ {
-			rVal++
-		}
-		z01.PrintRune(rVal)
-	}
+	// x
+	tens := points.x / 10
+	ones := points.x % 10
 
-	for _, r := range " y = " {
-		z01.PrintRune(r)
+	ch := '0'
+	for i := 0; i < tens; i++ {
+		ch++
 	}
+	z01.PrintRune(ch)
 
-	// Reset values
-	tempArr = [2]int{}
-	count = 0
-	mod = 0
-	for quot := points.y; quot > 0; quot /= base {
-		mod = quot % base
-		tempArr[count] = mod
-		count++
+	ch = '0'
+	for i := 0; i < ones; i++ {
+		ch++
 	}
-	for i := 1; i >= 0; i-- {
-		rVal := '0'
-		modVal := tempArr[i]
-		for j := 1; j <= modVal; j++ {
-			rVal++
-		}
-		z01.PrintRune(rVal)
+	z01.PrintRune(ch)
+
+	// ", y = "
+	z01.PrintRune(',')
+	z01.PrintRune(' ')
+	z01.PrintRune('y')
+	z01.PrintRune(' ')
+	z01.PrintRune('=')
+	z01.PrintRune(' ')
+
+	// points.y (21)
+	tens = points.y / 10
+	ones = points.y % 10
+
+	ch = '0'
+	for i := 0; i < tens; i++ {
+		ch++
 	}
+	z01.PrintRune(ch)
+
+	ch = '0'
+	for i := 0; i < ones; i++ {
+		ch++
+	}
+	z01.PrintRune(ch)
 
 	z01.PrintRune('\n')
 }
