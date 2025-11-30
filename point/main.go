@@ -32,33 +32,27 @@ func main() {
 	z01.PrintRune('\n')
 }
 
-func printInt(n int) {
-	if n == 0 {
-		z01.PrintRune('0')
+func PrintInt(r int) {
+	c := '0'
+	if r == 0 {
+		z01.PrintRune(c)
 		return
 	}
-
-	if n < 0 {
-		z01.PrintRune('-')
-		n = -n
+	for i := 1; i <= r%10; i++ {
+		c++
 	}
-
-	if n/10 != 0 {
-		printInt(n / 10)
+	for i := -1; i >= r%10; i-- {
+		c++
 	}
-
-	// Print the last digit
-	digit := n % 10
-	ch := '0'
-	for i := 0; i < digit; i++ {
-		ch++
+	if r/10 != 0 {
+		PrintInt(r / 10)
 	}
-	z01.PrintRune(ch)
+	z01.PrintRune(c)
 }
 
 func ToRune(n int) {
 	if n < 0 {
 		z01.PrintRune('-')
 	}
-	printInt(n)
+	PrintInt(n)
 }
