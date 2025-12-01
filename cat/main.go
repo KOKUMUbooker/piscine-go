@@ -17,17 +17,28 @@ func main() {
 				fmt.Fprintf(os.Stderr, "ERROR: %v\n", err)
 				return
 			}
-			fmt.Printf(string(data))
+			fmt.Printf("%v", string(data))
 		}
 
 		return
 	}
 
-	data, err := io.ReadAll(os.Stdin)
+	file := os.Stdin
+	fileInfo, err := file.Stat()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "ERROR: %v\n", err)
+		fmt.Println("file.Stat()", err)
+	}
+
+	if fileInfo.Size() > 0 {
+		data, err := io.ReadAll(os.Stdin)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "ERROR: %v\n", err)
+			return
+		}
+
+		fmt.Printf("%v", string(data))
 		return
 	}
 
-	fmt.Printf(string(data))
+	fmt.Printf("Hello\n")
 }
