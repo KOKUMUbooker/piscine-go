@@ -26,10 +26,11 @@ func IsSorted(f func(a, b int) int, a []int) bool {
 	sortedAscBool := true
 	sortedDescBool := true
 	for i, n := range a {
-		resAsc := f(n, sortedAsc[i])
-		resDesc := f(n, sortedDesc[i])
-		notEqualAsc := resAsc != 0 || resAsc > 0
-		notEqualDesc := resDesc != 0 || resDesc > 0
+		cmpAsc := f(n, sortedAsc[i])
+		cmpDesc := f(n, sortedDesc[i])
+
+		notEqualAsc := cmpAsc != 0
+		notEqualDesc := cmpDesc != 0
 
 		if sortedAscBool && notEqualAsc {
 			sortedAscBool = false
