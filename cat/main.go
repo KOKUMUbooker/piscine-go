@@ -25,15 +25,15 @@ func main() {
 		return
 	}
 
-	file := os.Stdin
-	fileInfo, err := file.Stat()
+	stat, err := os.Stdin.Stat()
 	if err != nil {
 		msg := "ERROR: " + err.Error() + "\n"
 		printMsg(msg)
 		os.Exit(1)
 	}
 
-	if fileInfo.Size() > 0 {
+	// If stdin is NOT a terminal ie it's piped data
+	if (stat.Mode() & os.ModeCharDevice) == 0 {
 		data, err := io.ReadAll(os.Stdin)
 		if err != nil {
 			msg := "ERROR: " + err.Error() + "\n"
