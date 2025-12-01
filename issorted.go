@@ -1,34 +1,55 @@
 package piscine
 
+// Allow for sorting checks either in ascending or descending
 func IsSorted(f func(a, b int) int, a []int) bool {
 	// f Returns positive int if 1st > 2nd,returns 0 if equal, returns -1 otherwise
-	if len(a) < 2 {
-		return true
-	}
+	sortedAsc := append([]int{}, a...)
+	sortedDesc := append([]int{}, a...)
 
-	asc := true
-	desc := true
-
-	for i := 0; i < len(a)-1; i++ {
-		cmp := f(a[i], a[i+1])
-
-		if cmp > 0 { // Check 1st vs 2nd for ascending order
-			asc = false
-		}
-		if cmp < 0 { // Check 1st vs 2nd for descending order
-			desc = false
+	n := len(sortedAsc)
+	for i := 0; i < n-1; i++ {
+		for j := 0; j < n-1; j++ {
+			if sortedAsc[j] > sortedAsc[j+1] {
+				sortedAsc[j], sortedAsc[j+1] = sortedAsc[j+1], sortedAsc[j]
+			}
 		}
 	}
 
-	return asc || desc
+	for i := 0; i < n-1; i++ {
+		for j := 0; j < n-1; j++ {
+			if sortedDesc[j] < sortedDesc[j+1] {
+				sortedDesc[j], sortedDesc[j+1] = sortedDesc[j+1], sortedDesc[j]
+			}
+		}
+	}
+
+	sortedAscBool := true
+	sortedDescBool := true
+	for i, n := range a {
+		resAsc := f(n, sortedAsc[i])
+		resDesc := f(n, sortedDesc[i])
+		notEqualAsc := resAsc != 0 || resAsc > 0
+		notEqualDesc := resDesc != 0 || resDesc > 0
+
+		if sortedAscBool && notEqualAsc {
+			sortedAscBool = false
+		}
+
+		if sortedDescBool && notEqualDesc {
+			sortedDescBool = false
+		}
+	}
+
+	return sortedAscBool || sortedDescBool
 }
 
 func F(a, b int) int {
-	if a > b {
-		return 1
-	}
 	if a == b {
 		return 0
+	}
+
+	if a > b {
+		return 1
 	}
 
 	return -1
