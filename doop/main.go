@@ -1,14 +1,11 @@
 package main
 
-import (
-	"os"
-)
+import "os"
 
 // For -> invalid operator, value, number of arguments
 // or an overflow print nothing
 // For -> the modulo and division operations by 0 print
 // "No division by 0" or "No modulo by 0"
-
 func main() {
 	if len(os.Args) != 4 {
 		return
