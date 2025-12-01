@@ -17,7 +17,7 @@ func main() {
 			if err != nil {
 				msg := "ERROR: " + err.Error() + "\n"
 				printMsg(msg)
-				return
+				os.Exit(1)
 			}
 			printMsg(string(data))
 		}
@@ -36,7 +36,7 @@ func main() {
 		if err != nil {
 			msg := "ERROR: " + err.Error() + "\n"
 			printMsg(msg)
-			return
+			os.Exit(1)
 		}
 
 		printMsg(string(data))
