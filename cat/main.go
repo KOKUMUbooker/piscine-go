@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"io"
 	"os"
+
+	"github.com/01-edu/z01"
 )
 
 func main() {
@@ -14,10 +16,11 @@ func main() {
 		for i := 0; i < len(params); i++ {
 			data, err := os.ReadFile(params[i])
 			if err != nil {
-				fmt.Fprintf(os.Stderr, "ERROR: %v\n", err)
+				msg := "ERROR: " + err.Error() + "\n"
+				printMsg(msg)
 				return
 			}
-			fmt.Printf("%v", string(data))
+			printMsg(string(data))
 		}
 
 		return
@@ -26,19 +29,26 @@ func main() {
 	file := os.Stdin
 	fileInfo, err := file.Stat()
 	if err != nil {
-		fmt.Println("file.Stat()", err)
+		return
 	}
 
 	if fileInfo.Size() > 0 {
 		data, err := io.ReadAll(os.Stdin)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "ERROR: %v\n", err)
+			msg := "ERROR: " + err.Error() + "\n"
+			printMsg(msg)
 			return
 		}
 
-		fmt.Printf("%v", string(data))
+		printMsg(string(data))
 		return
 	}
 
 	fmt.Printf("Hello\n")
+}
+
+func printMsg(s string) {
+	for _, r := range s {
+		z01.PrintRune(r)
+	}
 }
