@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"io"
 	"os"
 
@@ -44,7 +43,7 @@ func main() {
 		return
 	}
 
-	fmt.Printf("Hello\n")
+	printMsg("Hello\n")
 }
 
 func printMsg(s string) {
