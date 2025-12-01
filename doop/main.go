@@ -1,9 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"os"
-)
+import "os"
 
 // For -> invalid operator, value, number of arguments
 // or an overflow print nothing
@@ -44,8 +41,7 @@ func main() {
 		res = out
 	case "/":
 		if num2 == 0 {
-			// os.Stdin.WriteString("No division by 0\n")
-			fmt.Println("No division by 0")
+			os.Stdout.WriteString("No division by 0\n")
 			return
 		}
 		res = num1 / num2
@@ -57,8 +53,7 @@ func main() {
 		res = out
 	case "%":
 		if num2 == 0 {
-			// os.Stdin.WriteString("No modulo by 0\n")
-			fmt.Println("No modulo by 0")
+			os.Stdout.WriteString("No modulo by 0\n")
 			return
 		}
 		res = num1 % num2
@@ -66,8 +61,7 @@ func main() {
 		return
 	}
 
-	fmt.Println(convIntToStr(res))
-	// os.Stdin.WriteString(convIntToStr(res) + "\n")
+	os.Stdout.WriteString(convIntToStr(res) + "\n")
 }
 
 func add64(a, b int) (int, bool) {
