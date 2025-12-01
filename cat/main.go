@@ -28,7 +28,9 @@ func main() {
 	file := os.Stdin
 	fileInfo, err := file.Stat()
 	if err != nil {
-		return
+		msg := "ERROR: " + err.Error() + "\n"
+		printMsg(msg)
+		os.Exit(1)
 	}
 
 	if fileInfo.Size() > 0 {
