@@ -45,7 +45,7 @@ func main() {
 		return
 	}
 
-	printMsg("Hello\n")
+	// printMsg("Hello\n")
 }
 
 func printMsg(s string) {
