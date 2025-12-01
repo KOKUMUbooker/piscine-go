@@ -15,7 +15,7 @@ func IsSorted(f func(a, b int) int, a []int) bool {
 
 	for i, n := range a {
 		areEqual := f(n, sorted[i])
-		if areEqual != 0 {
+		if areEqual < 0 {
 			return false
 		}
 	}
