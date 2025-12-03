@@ -1,20 +1,18 @@
 package piscine
 
 func Unmatch(a []int) int {
-	res := -1
+	counts := make(map[int]int)
 
-	for i := 0; i < len(a); i++ {
-		present := false
-		for j := 0; j < len(a); j++ {
-			if j != i && a[i] == a[j] {
-				present = true
-			}
-		}
+	for _, v := range a {
+		counts[v]++
+	}
 
-		if !present {
-			return a[i]
+	for _, v := range a {
+		// Check for counts with odd values
+		if counts[v]%2 != 0 {
+			return v
 		}
 	}
 
-	return res
+	return -1
 }
