@@ -7,10 +7,10 @@ func Compact(ptr *[]string) int {
 
 	for _, s := range *ptr {
 		if s == str {
-			count++
 			continue
 		}
 		res = append(res, s)
+		count++
 	}
 
 	*ptr = res
