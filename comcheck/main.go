@@ -14,6 +14,7 @@ func main() {
 	for _, s := range args {
 		if s == "01" || s == "galaxy" || s == "galaxy 01" {
 			fmt.Println("Alert!!!")
+			return
 		}
 	}
 }
