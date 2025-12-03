@@ -19,8 +19,6 @@ func DescendComb() {
 			print2Digit(j)
 		}
 	}
-
-	z01.PrintRune('\n')
 }
 
 func print2Digit(n int) {
