@@ -14,20 +14,14 @@ func ShoppingSummaryCounter(str string) map[string]int {
 
 func splitString(s string) []string {
 	i := 0
-	end := 0
 
 	sR := []rune(s)
 	sRLen := len(sR)
 
 	res := []string{}
 	for i < sRLen {
-		if sR[i] == ' ' {
-			i++
-			end++
-			continue
-		}
-
-		for sR[end] != ' ' {
+		end := i + 1
+		for !isUpper(sR[end]) {
 			end++
 			if end == sRLen {
 				break
@@ -35,8 +29,27 @@ func splitString(s string) []string {
 		}
 
 		wordR := sR[i:end]
-		res = append(res, string(wordR))
+		word := removeSpace(string(wordR))
+		res = append(res, word)
+		if end == sRLen {
+			break
+		}
 		i = end
+	}
+
+	return res
+}
+
+func isUpper(r rune) bool {
+	return r >= 'A' && r <= 'Z'
+}
+
+func removeSpace(s string) string {
+	res := ""
+	for _, r := range s {
+		if r != ' ' {
+			res += string(r)
+		}
 	}
 
 	return res
