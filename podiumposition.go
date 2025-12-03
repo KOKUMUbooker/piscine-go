@@ -18,9 +18,10 @@ func PodiumPosition(podium [][]string) [][]string {
 
 func isGreater3(s1, s2 string) bool {
 	n := len(s1)
+	s2len := len(s2)
 	greater := false
 	for i := 0; i < n; i++ {
-		if s1[i] > s2[i] {
+		if i < s2len && s1[i] > s2[i] {
 			return true
 		}
 	}
