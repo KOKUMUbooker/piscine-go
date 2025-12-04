@@ -17,5 +17,5 @@ func RockAndRoll(n int) string {
 		return "roll\n"
 	}
 
-	return "error: number is negative\n"
+	return "error: non divisible\n"
 }
