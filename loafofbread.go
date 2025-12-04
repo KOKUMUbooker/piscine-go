@@ -40,7 +40,7 @@ func LoafOfBread(str string) string {
 	res := ""
 	for i, s := range sentence {
 		res += removeSpace(s)
-		if i != len(s)-1 {
+		if i != len(sentence)-1 {
 			res += " "
 		}
 	}
