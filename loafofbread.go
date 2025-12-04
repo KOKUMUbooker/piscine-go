@@ -1,60 +1,37 @@
 package piscine
 
 func LoafOfBread(str string) string {
-	if len(str) == 0 {
-		return "\n"
-	}
-
-	sR := []rune(str)
-	sRLen := len(sR)
-	if sRLen < 5 {
+	r := []rune(str)
+	if len(r) < 5 {
 		return "Invalid Output\n"
 	}
 
-	sentence := []string{}
-	i := 0
-	for i < sRLen {
-		end := i
+	result := ""
+	count := 0
 
-		wordR := []rune{}
-		for end < sRLen {
-			if sR[end] == ' ' && len(sR) != 5 {
-				end++
-				continue
-			}
-			wordR = append(wordR, sR[end])
-			end++
-			if len(wordR) == 5 {
-				sentence = append(sentence, string(wordR))
-				break
-			}
-			if end == sRLen {
-				sentence = append(sentence, string(wordR))
-				break
-			}
+	for i := 0; i < len(r); i++ {
+		if r[i] == ' ' {
+			continue
 		}
 
-		i = end + 1
-	}
+		result += string(r[i])
+		count++
 
-	res := ""
-	for i, s := range sentence {
-		res += removeSpace(s)
-		if i != len(sentence)-1 {
-			res += " "
+		if count == 5 {
+			result += " "
+			count = -1 // skip next character
+		}
+
+		if count == -1 {
+			count = 0
+			i++ // skip one char
 		}
 	}
 
-	return res + "\n"
-}
-
-func removeSpace(s string) string {
-	res := ""
-	for _, r := range s {
-		if r != ' ' {
-			res += string(r)
-		}
+	// Remove the trailing space if it exists
+	if len(result) > 0 && result[len(result)-1] == ' ' {
+		result = result[:len(result)-1]
 	}
 
-	return res
+	return result + "\n"
 }
