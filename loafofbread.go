@@ -39,11 +39,22 @@ func LoafOfBread(str string) string {
 
 	res := ""
 	for i, s := range sentence {
-		res += s
+		res += removeSpace(s)
 		if i != len(s)-1 {
 			res += " "
 		}
 	}
 
 	return res + "\n"
+}
+
+func removeSpace(s string) string {
+	res := ""
+	for _, r := range s {
+		if r != ' ' {
+			res += string(r)
+		}
+	}
+
+	return res
 }
