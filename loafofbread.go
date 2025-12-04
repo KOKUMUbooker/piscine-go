@@ -2,7 +2,7 @@ package piscine
 
 func LoafOfBread(str string) string {
 	if len(str) == 0 {
-		return "Invalid Output\n"
+		return "\n"
 	}
 
 	sR := []rune(str)
