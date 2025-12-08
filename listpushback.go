@@ -1,17 +1,17 @@
 package piscine
 
-type NodeL1 struct {
-	Data interface{}
-	Next *NodeL1
-}
+// type NodeL1 struct {
+// 	Data interface{}
+// 	Next *NodeL1
+// }
 
-type List1 struct {
-	Head *NodeL1
-	Tail *NodeL1
-}
+// type List1 struct {
+// 	Head *NodeL1
+// 	Tail *NodeL1
+// }
 
-func ListPushBack(l *List1, data interface{}) {
-	n := &NodeL1{Data: data}
+func ListPushBack(l *List, data interface{}) {
+	n := &NodeL{Data: data}
 
 	if l.Head == nil {
 		l.Head = n
