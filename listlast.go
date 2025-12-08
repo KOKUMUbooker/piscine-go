@@ -11,7 +11,12 @@ type List struct {
 }
 
 func ListLast(l *List) interface{} {
-	v := *l.Tail
+	if l == nil || l.Tail == nil {
+		return nil
+	}
+
+	n := l.Tail
+	v := *n
 
 	return v.Data
 }
