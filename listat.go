@@ -9,7 +9,7 @@ func ListAt(l *NodeL, pos int) *NodeL {
 	if l == nil {
 		return nil
 	}
-	
+
 	n := l
 	cur := 0
 	found := false
@@ -19,7 +19,7 @@ func ListAt(l *NodeL, pos int) *NodeL {
 			found = true
 			break
 		}
-		
+
 		cur++
 		n = n.Next
 	}
