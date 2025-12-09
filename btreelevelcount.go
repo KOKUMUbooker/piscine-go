@@ -8,5 +8,10 @@ func BTreeLevelCount(root *TreeNode) int {
 	lHeight := 1 + BTreeLevelCount(root.Left)
 	rHeight := 1 + BTreeLevelCount(root.Right)
 
-	return max(lHeight, rHeight)
+	h := lHeight
+	if h < rHeight {
+		h = rHeight
+	}
+
+	return h
 }
