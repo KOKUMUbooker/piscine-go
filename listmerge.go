@@ -18,10 +18,11 @@ func ListMerge(l1 *List, l2 *List) {
 	var n1 *NodeL
 	var n2 *NodeL
 
-	if l1 == nil {
+	if l1.Head == nil && l1.Tail == nil {
+		l1.Head = l2.Head
 		n1 = l2.Head
-		n2 = n1.Next
-	} else if l2 == nil {
+		n2 = l2.Head.Next
+	} else if l2.Head == nil && l2.Tail == nil {
 		return // l2 empty so just return what l1 had
 	} else {
 		n1 = l1.Tail
