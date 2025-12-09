@@ -1,7 +1,5 @@
 package piscine
 
-import "fmt"
-
 type NodeL struct {
 	Data interface{}
 	Next *NodeL
@@ -46,14 +44,4 @@ func ListRemoveIf(l *List, data_ref interface{}) {
 		prevN = n
 		n = n.Next
 	}
-}
-
-func PrintList(l *List) {
-	it := l.Head
-	for it != nil {
-		fmt.Print(it.Data, " -> ")
-		it = it.Next
-	}
-
-	fmt.Print(nil, "\n")
 }
