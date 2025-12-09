@@ -11,12 +11,22 @@ type List struct {
 }
 
 func ListMerge(l1 *List, l2 *List) {
-	if l1 == nil || l2 == nil {
+	if l1 == nil && l2 == nil {
 		return
 	}
 
-	n1 := l1.Tail
-	n2 := l2.Head
+	var n1 *NodeL
+	var n2 *NodeL
+
+	if l1 == nil {
+		n1 = l2.Head
+		n2 = n1.Next
+	} else if l2 == nil {
+		return // l2 empty so just return what l1 had
+	} else {
+		n1 = l1.Tail
+		n2 = l2.Head
+	}
 
 	for n2 != nil {
 		if n1 == nil {
