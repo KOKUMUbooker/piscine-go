@@ -12,7 +12,7 @@ func BTreeInsertData(root *TreeNode, data string) *TreeNode {
 
 	for r != nil {
 		parent = r
-		if data > r.Data || data == r.Data { // Move to right
+		if data >= r.Data { // Move to right
 			r = r.Right
 			continue
 		}
@@ -24,12 +24,15 @@ func BTreeInsertData(root *TreeNode, data string) *TreeNode {
 	}
 
 	if parent == nil {
-		return &TreeNode{Data: data}
+		return newNode
 	} else if data > parent.Data {
 		parent.Right = newNode
 	} else {
 		parent.Left = newNode
 	}
+
+	// Set parent pointer on the new node
+	newNode.Parent = parent
 
 	return root
 }
