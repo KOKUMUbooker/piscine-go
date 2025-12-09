@@ -19,6 +19,9 @@ func ListMerge(l1 *List, l2 *List) {
 	n2 := l2.Head
 
 	for n2 != nil {
+		if n1 == nil {
+			break
+		}
 		n1.Next = n2
 		n1 = n1.Next
 		n2 = n2.Next
