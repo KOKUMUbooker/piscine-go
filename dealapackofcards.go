@@ -6,7 +6,7 @@ import (
 	"github.com/01-edu/z01"
 )
 
-func DealAPackOfCards (deck []int) {
+func DealAPackOfCards(deck []int) {
 	for i := 0; i < 4; i++ {
 		fmt.Printf("Player %d: ", i+1)
 		for j := 0; j < 3; j++ {
