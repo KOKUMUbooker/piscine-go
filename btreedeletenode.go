@@ -1,7 +1,5 @@
 package piscine
 
-import "piscine"
-
 type TreeNode struct {
 	Left, Right, Parent *TreeNode
 	Data                string
@@ -51,9 +49,9 @@ func BTreeDeleteNode(root, node *TreeNode) *TreeNode {
 	return root
 }
 
-func BTreeInsertData(root *piscine.TreeNode, data string) *piscine.TreeNode {
+func BTreeInsertData(root *TreeNode, data string) *TreeNode {
 	if root == nil {
-		return &piscine.TreeNode{Data: data}
+		return &TreeNode{Data: data}
 	}
 
 	if data < root.Data {
@@ -67,15 +65,15 @@ func BTreeInsertData(root *piscine.TreeNode, data string) *piscine.TreeNode {
 	return root
 }
 
-func BTreeSearchItem(root *piscine.TreeNode, elem string) *piscine.TreeNode {
+func BTreeSearchItemOg(root *TreeNode, elem string) *TreeNode {
 	if root == nil {
 		return nil
 	}
 
 	if elem > root.Data {
-		return BTreeSearchItem(root.Right, elem)
+		return BTreeSearchItemOg(root.Right, elem)
 	} else if elem < root.Data {
-		return BTreeSearchItem(root.Left, elem)
+		return BTreeSearchItemOg(root.Left, elem)
 	} else if elem == root.Data {
 		return root
 	} else {
@@ -83,7 +81,7 @@ func BTreeSearchItem(root *piscine.TreeNode, elem string) *piscine.TreeNode {
 	}
 }
 
-func BTreeApplyInorder(root *piscine.TreeNode, f func(...interface{}) (int, error)) {
+func BTreeApplyInorder(root *TreeNode, f func(...interface{}) (int, error)) {
 	if root == nil {
 		return
 	}

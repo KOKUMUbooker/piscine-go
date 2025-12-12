@@ -5,7 +5,7 @@ package piscine
 // 	Data                string
 // }
 
-func BTreeInsertData(root *TreeNode, data string) *TreeNode {
+func BTreeInsertDataOg(root *TreeNode, data string) *TreeNode {
 	newNode := &TreeNode{Data: data}
 	r := root
 	var parent *TreeNode
