@@ -65,20 +65,46 @@ func BTreeInsertData(root *TreeNode, data string) *TreeNode {
 	return root
 }
 
-func BTreeSearchItemOg(root *TreeNode, elem string) *TreeNode {
+func BTreeSearchItem(root *TreeNode, elem string) *TreeNode {
 	if root == nil {
 		return nil
 	}
 
 	if elem > root.Data {
-		return BTreeSearchItemOg(root.Right, elem)
+		return BTreeSearchItem(root.Right, elem)
 	} else if elem < root.Data {
-		return BTreeSearchItemOg(root.Left, elem)
+		return BTreeSearchItem(root.Left, elem)
 	} else if elem == root.Data {
 		return root
 	} else {
 		return root
 	}
+}
+
+func BTreeIsBinary(root *TreeNode) bool {
+	return checkIsBST(root, nil, nil)
+}
+
+func checkIsBST(node *TreeNode, min *string, max *string) bool {
+	if node == nil {
+		return true
+	}
+
+	val := node.Data
+
+	// Check against min bound
+	if min != nil && val <= *min {
+		return false
+	}
+
+	// Check against max bound
+	if max != nil && val >= *max {
+		return false
+	}
+
+	// Check subtrees with updated bounds using the val
+	return checkIsBST(node.Left, min, &val) &&
+		checkIsBST(node.Right, &val, max)
 }
 
 func BTreeApplyInorder(root *TreeNode, f func(...interface{}) (int, error)) {

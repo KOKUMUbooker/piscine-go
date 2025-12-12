@@ -1,10 +1,10 @@
 package piscine
 
-func BTreeIsBinary(root *TreeNode) bool {
-	return checkIsBST(root, nil, nil)
+func BTreeIsBinaryOg(root *TreeNode) bool {
+	return checkIsBSTOg(root, nil, nil)
 }
 
-func checkIsBST(node *TreeNode, min *string, max *string) bool {
+func checkIsBSTOg(node *TreeNode, min *string, max *string) bool {
 	if node == nil {
 		return true
 	}
@@ -22,6 +22,6 @@ func checkIsBST(node *TreeNode, min *string, max *string) bool {
 	}
 
 	// Check subtrees with updated bounds using the val
-	return checkIsBST(node.Left, min, &val) &&
-		checkIsBST(node.Right, &val, max)
+	return checkIsBSTOg(node.Left, min, &val) &&
+		checkIsBSTOg(node.Right, &val, max)
 }

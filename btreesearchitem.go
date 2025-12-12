@@ -1,6 +1,6 @@
 package piscine
 
-func BTreeSearchItem(root *TreeNode, elem string) *TreeNode {
+func BTreeSearchItemOg(root *TreeNode, elem string) *TreeNode {
 	if root == nil {
 		return nil
 	}
