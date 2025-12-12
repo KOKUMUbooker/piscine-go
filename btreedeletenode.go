@@ -1,5 +1,10 @@
 package piscine
 
+type TreeNode struct {
+	Left, Right, Parent *TreeNode
+	Data                string
+}
+
 func minNode(node *TreeNode) *TreeNode {
 	for node.Left != nil {
 		node = node.Left
