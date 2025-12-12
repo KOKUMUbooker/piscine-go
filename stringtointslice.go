@@ -4,7 +4,7 @@ func StringToIntSlice(str string) []int {
 	if len(str) == 0 {
 		return nil
 	}
-	
+
 	result := []int{}
 
 	for _, r := range str {
