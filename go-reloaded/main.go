@@ -5,6 +5,7 @@ import (
 	"io/fs"
 	"fmt"
 
+	"piscine"
 )
 
 func main() {
@@ -25,6 +26,11 @@ func main() {
 	fmt.Println("Input : ", string(input))
 
 	// 1. Split sentence into words with space as separator
+	sentence := piscine.Split(input, " ")
+
+	fmt.Println()
+	fmt.Println("Sentence Arr ", len(sentence), " : ", sentence)
+
 	// 2. Initialize string array for the result
 	// 3. Loop through array of words, looking for mod keys & if found call utility functions on the previous word
 	// 4. Join the result string with space as separator
