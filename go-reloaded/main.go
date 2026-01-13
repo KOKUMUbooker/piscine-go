@@ -4,8 +4,9 @@ import (
 	"os"
 	"io/fs"
 	"fmt"
+	"strings"
 
-	// "piscine"
+	"piscine"
 )
 
 func main() {
@@ -47,6 +48,18 @@ func main() {
 		case "(low)":
 		case "(cap)":
 		}
+
+		lPrefix := "(low,"
+		uPrefix := "(up,"
+		cPrefix := "(cap,"
+		if strings.HasPrefix(word, lPrefix) {
+			// nS := strings.Trim(word[len(lPrefix) : len(word)-1], " ")			
+		} else if strings.HasPrefix(word, uPrefix) {
+
+		} else if strings.HasPrefix(word, cPrefix) {
+
+		}
+
 	}
 
 	fmt.Println("Res : ",res)
