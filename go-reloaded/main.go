@@ -26,7 +26,7 @@ func main() {
 	fmt.Println("Input : ", string(input))
 
 	// 1. Split sentence into words with space as separator
-	sentence := piscine.Split(input, " ")
+	sentence := piscine.Split(string(input), " ")
 
 	fmt.Println()
 	fmt.Println("Sentence Arr ", len(sentence), " : ", sentence)
